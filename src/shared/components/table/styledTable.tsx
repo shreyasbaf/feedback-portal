@@ -41,6 +41,7 @@ export const StyledTable = styled.div<any>`
     width: 100%;
     border-collapse: collapse;
     font-family: NunitoRegular !important;
+    overflow-x: hidden;
   }
   .ReactTable .rt-thead {
     -webkit-box-flex: 1;

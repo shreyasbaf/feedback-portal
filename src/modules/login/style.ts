@@ -39,7 +39,7 @@ export const ModalContent = styled.div<any>`
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
   width: 80%;
-  @media (min-width: 425px) {
+  @media (min-width: 426px) {
     width: 450px;
   }
   h5 {
