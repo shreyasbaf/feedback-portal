@@ -16,3 +16,5 @@ const composeWithDevTools = (middleware: any) => {
 const store = createStore(rootReducer, composeWithDevTools(thunkMiddleware))
 
 export {store}
+
+export const baseURL = 'https://feedback-rapid.herokuapp.com'

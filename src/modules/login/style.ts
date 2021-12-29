@@ -81,7 +81,7 @@ export const Close = styled.img`
   }
 `;
 
-export const FormWrapper = styled.div`
+export const FormWrapper = styled.form`
   width: 100%;
 `;
 
@@ -94,6 +94,7 @@ export const Input = styled.input`
   border: 0px;
   outline: none;
   border-radius: 30px;
+  font-size: 14px;
 `;
 
 export const SubmitButton = styled.button`
@@ -113,7 +114,7 @@ export const SubmitButtonIcon = styled.i`
 
 export const Icons = styled.i`
   position: absolute;
-  margin-top: 14px;
+  margin-top: 17px;
   left: 35px;
   color: #9a99aa;
 `;

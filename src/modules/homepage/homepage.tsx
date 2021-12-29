@@ -1,4 +1,8 @@
-import { useState } from "react";
+import {useEffect, useState} from 'react'
+import {dispatch} from 'react-hot-toast/dist/core/store'
+import {useDispatch, useSelector} from 'react-redux'
+import {postFeedback} from '../../Redux/Root/actions'
+import toast from 'react-hot-toast'
 
 import {
   HomeContainer,
@@ -6,46 +10,66 @@ import {
   Title,
   FormWrapper,
   Input,
+  Select,
   TextInput,
   Icons,
   SubmitButton,
   SubmitButtonIcon,
-} from "./style";
+} from './style'
 
 const Homepage = (props: any) => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<any>("");
-  const [message, setMessage] = useState<string>("");
+  const dispatch = useDispatch()
+  const {feedbackPostSuccess, feedbackPostLoading} = useSelector(
+    (state: any) => state.feedback
+  )
+
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<any>('')
+  const [message, setMessage] = useState<string>('')
+  const [categoryName, setCategoryName] = useState<string>('')
 
   const handleInput = (event: any, type: string) => {
-    const { value } = event.target;
-    console.log(value);
-    if (type === "name") {
-      setName(value);
-    } else if (type === "email") {
-      setEmail(value);
+    const {value} = event.target
+    if (type === 'name') {
+      setName(value)
+    } else if (type === 'email') {
+      setEmail(value)
+    } else if (type === 'category') {
+      setCategoryName(value)
     } else {
-      setMessage(value);
+      setMessage(value)
     }
-  };
+  }
 
   const handleSubmit = () => {
-    if (name === "" || email === "" || message === "") {
-      setName("");
-      setEmail("");
-      setMessage("");
-      alert("All fields are mandatory!");
+    if (name === '' || email === '' || message === '') {
+      setName('')
+      setEmail('')
+      setMessage('')
+      alert('All fields are mandatory!')
     } else {
-      const formData = { name, email, message };
-      console.log(formData);
-      setName("");
-      setEmail("");
-      setMessage("");
-      alert(
-        "Thank you for getting in touch! ,We appreciate your feedback. One of our colleagues will get back in touch with you soon! Have a great day!"
-      );
+      const data = {name, email, feedback: message, category: categoryName}
+      dispatch(postFeedback(data))
+      // setName('')
+      // setEmail('')
+      // setMessage('')
+      // alert(
+      //   'Thank you for getting in touch! ,We appreciate your feedback. One of our colleagues will get back in touch with you soon! Have a great day!'
+      // )
     }
-  };
+  }
+
+  useEffect(() => {
+    if (feedbackPostSuccess === 'success') {
+      toast.success('Successfully Submitted!')
+      setName('')
+      setEmail('')
+      setMessage('')
+      setCategoryName('')
+    } else {
+      toast.dismiss()
+    }
+  }, [feedbackPostSuccess])
 
   return (
     <HomeContainer>
@@ -53,33 +77,48 @@ const Homepage = (props: any) => {
         <Title>We value your feedback</Title>
         <FormWrapper>
           <Input
-            type="text"
-            placeholder="Name"
+            type='text'
+            placeholder='Name'
             value={name}
-            onChange={(e) => handleInput(e, "name")}
+            onChange={(e) => handleInput(e, 'name')}
           />
-          <Icons className="fas fa-user"></Icons>
+          <Icons className='fas fa-user'></Icons>
           <Input
-            type="text"
-            placeholder="Email"
+            type='email'
+            placeholder='Email'
             value={email}
-            onChange={(e) => handleInput(e, "email")}
+            onChange={(e) => handleInput(e, 'email')}
           />
-          <Icons className="fas fa-envelope"></Icons>
+          <Icons className='fas fa-envelope'></Icons>
+          <Select
+            value={categoryName}
+            onChange={(e) => handleInput(e, 'category')}
+          >
+            <option hidden={true}>Select Category</option>
+            <option value='blockchain'>Blockchain</option>
+            <option value='frontend'>Frontend</option>
+            <option value='styled_components'>Styled Components</option>
+            <option value='others'>Others</option>
+          </Select>
+          {/* <Icons className='fas fa-envelope'></Icons> */}
           <TextInput
-            placeholder="Message....."
+            placeholder='Message.....'
             cols={30}
             rows={10}
             value={message}
-            onChange={(e) => handleInput(e, "message")}
+            onChange={(e) => handleInput(e, 'message')}
           />
-          <SubmitButton onClick={handleSubmit}>
-            Submit
-            <SubmitButtonIcon className="fas fa-arrow-right"></SubmitButtonIcon>
+          <SubmitButton onClick={handleSubmit} disabled={feedbackPostLoading}>
+            {feedbackPostLoading ? 'Submitting...' : 'Submit'}
+            <SubmitButtonIcon
+              className={
+                feedbackPostLoading ? 'fas fa-spinner' : 'fas fa-arrow-right'
+              }
+            ></SubmitButtonIcon>
           </SubmitButton>
         </FormWrapper>
       </Card>
     </HomeContainer>
-  );
-};
-export default Homepage;
+  )
+}
+export default Homepage

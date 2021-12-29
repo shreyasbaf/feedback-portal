@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HomeContainer = styled.div`
   margin-left: 15px;
@@ -7,7 +7,7 @@ export const HomeContainer = styled.div`
     margin-left: 20%;
     margin-right: 20%;
   }
-`;
+`
 
 export const Card = styled.div`
   max-width: 450px;
@@ -16,19 +16,19 @@ export const Card = styled.div`
   margin: 75px auto;
   border-radius: 30px;
   position: relative;
-`;
-export const Title = styled.p`
+`
+export const Title = styled.h1`
   color: #535274;
-  font-weight: 700;
-  letter-spacing: 5px;
+  font-weight: bold !important;
+  letter-spacing: 3px;
   margin-bottom: 25px;
   text-align: center;
   font-size: 22px;
-`;
+`
 
 export const FormWrapper = styled.div`
   width: 100%;
-`;
+`
 
 export const Input = styled.input`
   width: 100%;
@@ -39,7 +39,27 @@ export const Input = styled.input`
   border: 0px;
   outline: none;
   border-radius: 30px;
-`;
+  font-size: 14px;
+  color: #535274;
+  &::placeholder {
+    opacity: 1;
+    font-size: 14px;
+  }
+`
+
+export const Select = styled.select`
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 15px;
+  box-sizing: border-box;
+  background: #ebeef1;
+  border: 0px;
+  outline: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #535274;
+`
 
 export const TextInput = styled.textarea`
   width: 100%;
@@ -55,14 +75,19 @@ export const TextInput = styled.textarea`
   margin-bottom: 30px;
   padding: 15px 15px;
   resize: none;
-`;
+  font-size: 14px;
+  color: #535274;
+  &::placeholder {
+    opacity: 1;
+  }
+`
 
 export const Icons = styled.i`
   position: absolute;
-  margin-top: 14px;
   left: 65px;
-  color: #9a99aa;
-`;
+  margin-top: 17px;
+  color: #535274;
+`
 
 export const SubmitButton = styled.button`
   background: #827ffe;
@@ -73,9 +98,9 @@ export const SubmitButton = styled.button`
   border: none;
   border-radius: 25px;
   cursor: pointer;
-`;
+`
 
 export const SubmitButtonIcon = styled.i`
   margin-left: 10px;
   font-size: 12px;
-`;
+`

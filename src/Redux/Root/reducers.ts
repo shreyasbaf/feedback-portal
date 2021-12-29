@@ -12,7 +12,7 @@ interface initialStateTypes {
   feedbackPostSuccess: string
   feedbackPostFail: string
   feedbacksLoading: boolean
-  feedbacksSuccess: {}[]
+  allFeedbacks: {}[]
   feedbacksFail: string
 }
 
@@ -21,9 +21,10 @@ const initialState: initialStateTypes = {
   feedbackPostSuccess: '',
   feedbackPostFail: '',
   feedbacksLoading: false,
-  feedbacksSuccess: [],
+  allFeedbacks: [],
   feedbacksFail: '',
 }
+
 export const feedbackReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case FEEDBACK_POST_REQUEST:
@@ -36,6 +37,7 @@ export const feedbackReducer = (state = initialState, action: any) => {
       return {
         ...state,
         feedbackPostLoading: false,
+        feedbackPostSuccess: action.payload,
       }
     case FEEDBACK_POST_FAIL:
       return {
@@ -53,6 +55,7 @@ export const feedbackReducer = (state = initialState, action: any) => {
       return {
         ...state,
         feedbacksLoading: false,
+        allFeedbacks: action.payload,
       }
     case GET_FEEDBACKS_FAIL:
       return {

@@ -1,12 +1,14 @@
-import styled from "styled-components";
-import { rgba } from "polished";
+import styled from 'styled-components'
+import {rgba} from 'polished'
 
-const rowHeight = `50px`;
-const primaryLightWithAlpha = (alpha: number) => rgba(255, 255, 255, alpha);
+const rowHeight = `50px`
+const primaryLightWithAlpha = (alpha: number) => rgba(255, 255, 255, alpha)
 
 export const StyledTable = styled.div<any>`
   transition: width 600ms ease-out, height 600ms ease-out;
   padding-top: 24px;
+  color: #212241;
+
   .ReactTable {
     position: relative;
     display: -webkit-box;
@@ -17,6 +19,7 @@ export const StyledTable = styled.div<any>`
     -ms-flex-direction: column;
 
     flex-direction: column;
+    color: #212241;
 
     clear: both;
     border: none;
@@ -40,7 +43,6 @@ export const StyledTable = styled.div<any>`
     align-items: stretch;
     width: 100%;
     border-collapse: collapse;
-    font-family: NunitoRegular !important;
     overflow-x: hidden;
   }
   .ReactTable .rt-thead {
@@ -64,7 +66,7 @@ export const StyledTable = styled.div<any>`
     background: rgba(186, 169, 255, 0.07);
   }
   .ReactTable .rt-thead.-headerGroups {
-    background: "#6B00D7";
+    background: '#6B00D7';
   }
   .ReactTable .rt-thead.-filters {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
@@ -132,7 +134,7 @@ export const StyledTable = styled.div<any>`
     left: 100%;
     top: 50%;
     border: solid transparent;
-    content: " ";
+    content: ' ';
     height: 0;
     width: 0;
     position: absolute;
@@ -247,7 +249,7 @@ export const StyledTable = styled.div<any>`
     margin: 0 10px;
   }
   .ReactTable .rt-expander:after {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 0;
@@ -290,6 +292,7 @@ export const StyledTable = styled.div<any>`
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
+    color: #212241;
   }
   .ReactTable .rt-tfoot .rt-td {
     border-right: 1px solid rgba(0, 0, 0, 0.05);
@@ -298,7 +301,7 @@ export const StyledTable = styled.div<any>`
     border-right: 0;
   }
   .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
-    background: "#6B00D7";
+    background: '#6B00D7';
   }
   .ReactTable .-pagination {
     z-index: 1;
@@ -315,12 +318,12 @@ export const StyledTable = styled.div<any>`
     flex-wrap: wrap;
     padding: 3px;
     border-top: 2px solid rgba(0, 0, 0, 0.1);
+    color: #212241;
   }
   .ReactTable .-pagination input,
   .ReactTable .-pagination select {
     background: inherit;
     height: 30px;
-
     padding: 5px 7px;
     font-size: inherit;
     border-radius: 3px;
@@ -338,7 +341,6 @@ export const StyledTable = styled.div<any>`
     border-radius: 3px;
     padding: 6px;
     font-size: 1em;
-
     background: inherit;
     transition: all 0.1s ease;
     cursor: pointer;
@@ -382,7 +384,7 @@ export const StyledTable = styled.div<any>`
     display: inline-block;
     margin: 3px 10px;
     white-space: nowrap;
-    color: white;
+    color: #212241;
 
     input {
       margin-bottom: 0 !important;
@@ -395,7 +397,8 @@ export const StyledTable = styled.div<any>`
   .ReactTable .-pagination .-pageJump input {
     width: 70px;
     text-align: start;
-    color: white;
+    color: #212241;
+    font-weight: 700;
     -moz-appearance: textfield;
     ::-webkit-outer-spin-button,
     ::-webkit-inner-spin-button {
@@ -408,11 +411,11 @@ export const StyledTable = styled.div<any>`
     position: absolute;
     left: 0;
     bottom: -20px;
-    color: white;
+    color: #212241;
 
     :before {
       cursor: initial;
-      content: "showing:";
+      content: 'showing:';
     }
     select {
       margin-bottom: 0;
@@ -480,4 +483,4 @@ export const StyledTable = styled.div<any>`
     -ms-user-select: none;
     user-select: none;
   }
-`;
+`

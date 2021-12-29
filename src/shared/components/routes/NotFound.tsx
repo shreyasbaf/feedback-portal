@@ -1,5 +1,5 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react'
+import styled from 'styled-components'
 
 const StyledNotFound = styled.div`
   display: flex;
@@ -7,28 +7,33 @@ const StyledNotFound = styled.div`
   align-items: center;
   flex-direction: column;
   margin-top: 180px;
-`;
+`
 const Title = styled.div`
   font-weight: 600;
   font-size: 20px;
   line-height: 26px;
   color: #2b3141;
-`;
+`
+const Heading = styled<any>(Title)`
+  font-size: 50px;
+  margin-bottom: 20px;
+`
 const Text = styled.div`
   font-size: 14px;
   line-height: 26px;
   color: #676767;
-`;
+`
 
 export function NotFound() {
   return (
     <StyledNotFound>
       {/* <img src={require('assets/image/page-not-found.svg')} alt="" /> */}
+      <Heading>404</Heading>
       <Title>Page Not Found</Title>
       <Text>
         The page you are looking for was moved, removed, renamed or might never
         existed
       </Text>
     </StyledNotFound>
-  );
+  )
 }

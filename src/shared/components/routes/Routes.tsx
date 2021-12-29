@@ -63,7 +63,7 @@ const Routes: React.FC<any> = () => {
       <Navbar />
       <StyledRoutesContainer>
         <Switch>
-          <Route path="/home" element={<Landingpage />} />
+          <Route path="/dashboard" element={<Landingpage />} />
           <Route path="/" element={<Homepage />} />
           <Route path="*" element={<NotFound />} />
         </Switch>

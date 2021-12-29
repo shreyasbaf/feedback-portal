@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 interface ModalBodyProps {
-  show: boolean;
+  show: boolean
 }
 
 export const ModalBody = styled.div<ModalBodyProps>`
-  display: ${(props) => (props.show ? "block" : "none")};
+  display: ${(props) => (props.show ? 'block' : 'none')};
   position: fixed;
   z-index: 100000;
   left: 0;
@@ -14,7 +14,7 @@ export const ModalBody = styled.div<ModalBodyProps>`
   height: 100%;
   overflow: auto;
   background: rgba(15, 16, 23, 0.9);
-`;
+`
 
 export const ModalContent = styled.div<any>`
   padding: 20px;
@@ -53,7 +53,7 @@ export const ModalContent = styled.div<any>`
       line-height: 30px;
     }
   }
-`;
+`
 
 export const ModelHead = styled.div`
   color: black;
@@ -71,7 +71,7 @@ export const ModelHead = styled.div`
       line-height: 30px;
     }
   }
-`;
+`
 
 export const Close = styled.img`
   cursor: pointer;
@@ -79,12 +79,10 @@ export const Close = styled.img`
   :hover {
     width: 25px;
   }
-`;
-
-export const FormWrapper = styled.div`
+`
+export const FormWrapper = styled.form`
   width: 100%;
-`;
-
+`
 export const Input = styled.input`
   width: 100%;
   margin-bottom: 12px;
@@ -94,8 +92,8 @@ export const Input = styled.input`
   border: 0px;
   outline: none;
   border-radius: 30px;
-`;
-
+  font-size: 14px;
+`
 export const SubmitButton = styled.button`
   background: #827ffe;
   width: 100%;
@@ -105,15 +103,14 @@ export const SubmitButton = styled.button`
   border: none;
   border-radius: 25px;
   cursor: pointer;
-`;
+`
 export const SubmitButtonIcon = styled.i`
   margin-left: 10px;
   font-size: 12px;
-`;
-
+`
 export const Icons = styled.i`
   position: absolute;
-  margin-top: 14px;
+  margin-top: 17px;
   left: 35px;
   color: #9a99aa;
-`;
+`

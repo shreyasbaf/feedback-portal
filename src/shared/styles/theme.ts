@@ -37,13 +37,36 @@ export const screenSizes: ScreenSizes = {
   mediaLXX: 2000,
 }
 
-export const GlobalStyle = createGlobalStyle`
-
-body {
-  background: ${colors.themeBackground} !important;
-  /* background: #090D24 !important; */
-}
-
-
-
+export const GlobalStyles = createGlobalStyle<any>`
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  * {
+    margin: 0;
+  }
+  html, body {
+    height: 100%;
+  }
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-style: normal;
+    background: ${colors.themeBackground} !important;
+  }
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  input, button, textarea, select {
+    font: inherit;
+  }
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  #root, #__next {
+    isolation: isolate;
+  }
 `
