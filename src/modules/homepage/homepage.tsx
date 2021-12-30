@@ -16,12 +16,14 @@ import {
   SubmitButton,
   SubmitButtonIcon,
 } from './style'
+import Landing from '../landing/landing'
 
 const Homepage = (props: any) => {
   const dispatch = useDispatch()
   const {feedbackPostSuccess, feedbackPostLoading} = useSelector(
     (state: any) => state.feedback
   )
+  const {loginSuccess} = useSelector((state: any) => state.user)
 
   const [name, setName] = useState<string>('')
   const [email, setEmail] = useState<any>('')
@@ -50,12 +52,6 @@ const Homepage = (props: any) => {
     } else {
       const data = {name, email, feedback: message, category: categoryName}
       dispatch(postFeedback(data))
-      // setName('')
-      // setEmail('')
-      // setMessage('')
-      // alert(
-      //   'Thank you for getting in touch! ,We appreciate your feedback. One of our colleagues will get back in touch with you soon! Have a great day!'
-      // )
     }
   }
 
@@ -71,7 +67,19 @@ const Homepage = (props: any) => {
     }
   }, [feedbackPostSuccess])
 
-  return (
+  useEffect(() => {
+    if(loginSuccess !== ''){
+      setName(loginSuccess.name)
+      setEmail(loginSuccess.email)
+    }else {
+      // sessionStorage.clear();
+      setName('')
+      setEmail('')
+    }
+  }, [loginSuccess])
+
+  return (<>
+      { loginSuccess.isAdmin ? <Landing /> : 
     <HomeContainer>
       <Card>
         <Title>We value your feedback</Title>
@@ -81,6 +89,7 @@ const Homepage = (props: any) => {
             placeholder='Name'
             value={name}
             onChange={(e) => handleInput(e, 'name')}
+            readOnly
           />
           <Icons className='fas fa-user'></Icons>
           <Input
@@ -88,6 +97,7 @@ const Homepage = (props: any) => {
             placeholder='Email'
             value={email}
             onChange={(e) => handleInput(e, 'email')}
+            readOnly
           />
           <Icons className='fas fa-envelope'></Icons>
           <Select
@@ -119,6 +129,8 @@ const Homepage = (props: any) => {
         </FormWrapper>
       </Card>
     </HomeContainer>
+      }
+      </>
   )
 }
 export default Homepage

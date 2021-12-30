@@ -1,4 +1,8 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import { userSignUP } from '../../Redux/User/actions'
+import toast from 'react-hot-toast'
+
 import {
   ModalBody,
   ModalContent,
@@ -12,14 +16,34 @@ import {
 } from './style'
 
 const Signup = (props: any) => {
+  const dispatch = useDispatch();
+  const {signupSuccess, signupLoading} = useSelector(
+    (state: any) => state.user
+  )
   const [fullName, setFullName] = useState<string>('')
   const [email, setEmail] = useState<string>('')
   const [passWord, setPassWord] = useState<string>('')
 
   const submitSignUpForm = (e: any) => {
-    e.preventDefault()
+    if (fullName === '' || email === '' || passWord === '') {
+      alert('All fields are mandatory!')
+    } else {
+      const data = {name:fullName, email, password:passWord}
+      dispatch(userSignUP(data))
+    }
   }
 
+  useEffect(() => {
+    if (signupSuccess === 'success') {
+      props.Close()
+      toast.success('Acount Created Successfully!')
+      setFullName('')
+      setEmail('')
+      setPassWord('')
+    } else {
+      toast.dismiss()
+    }
+  }, [signupSuccess])
   return (
     <div>
       <ModalBody show={props.show}>
@@ -33,7 +57,7 @@ const Signup = (props: any) => {
           </ModelHead>
           <h5 style={{textAlign: 'center'}}>Create a new account </h5>
           <br />
-          <FormWrapper onSubmit={(e) => submitSignUpForm(e)}>
+          <FormWrapper>
             <Input
               placeholder='Full Name'
               type='text'
@@ -55,10 +79,14 @@ const Signup = (props: any) => {
               onChange={(e) => setPassWord(e.target.value)}
             />
             <Icons className='fas fa-lock-open'></Icons>
-            <SubmitButton type='submit'>
-              Signup
-              <SubmitButtonIcon className='fas fa-arrow-right'></SubmitButtonIcon>
-            </SubmitButton>
+            <SubmitButton onClick={submitSignUpForm} disabled={signupLoading}>
+            {signupLoading ? 'Submitting...' : 'Submit'}
+            <SubmitButtonIcon
+              className={
+                signupLoading ? 'fas fa-spinner' : 'fas fa-arrow-right'
+              }
+            ></SubmitButtonIcon>
+          </SubmitButton>
           </FormWrapper>
         </ModalContent>
       </ModalBody>

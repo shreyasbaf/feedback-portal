@@ -5,10 +5,13 @@ import Login from "../../../modules/login";
 import Signup from "../../../modules/signup";
 import { ThreeColumns } from "../../../shared/styles/styling";
 import { Button } from "../button";
+import { useDispatch, useSelector } from "react-redux";
+import { userLogout } from "../../../Redux/User/actions";
 
 const Navbar = (props: any) => {
+  const dispatch = useDispatch();
+  const {loginSuccess} = useSelector((state: any) => state.user)
   const [show, setShow] = React.useState("");
-
   const Close = () => {
     setShow("");
   };
@@ -23,6 +26,14 @@ const Navbar = (props: any) => {
           alt="logo"
         />
         <ButtonHolders>
+        {loginSuccess.login === 'success' ?
+        <Button
+            background="rgb(162,48,237)"
+            color="white"
+            onClick={() => dispatch(userLogout()) }
+          >
+            Logout
+          </Button>:
           <Button
             background="rgb(162,48,237)"
             color="white"
@@ -30,6 +41,8 @@ const Navbar = (props: any) => {
           >
             Login
           </Button>
+        }
+        {loginSuccess? '' : 
           <Button
             background="rgb(110,71,255)"
             color="white"
@@ -37,6 +50,7 @@ const Navbar = (props: any) => {
           >
             Signup
           </Button>
+        }
         </ButtonHolders>
       </ThreeColumns>
       <Login show={show == "login" ? true : false} Close={() => Close()} />
@@ -45,3 +59,4 @@ const Navbar = (props: any) => {
   );
 };
 export default Navbar;
+

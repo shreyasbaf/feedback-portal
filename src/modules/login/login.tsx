@@ -1,4 +1,7 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import toast from 'react-hot-toast'
+
 import {
   ModalBody,
   ModalContent,
@@ -10,14 +13,42 @@ import {
   SubmitButton,
   Icons,
 } from './style'
+import { userLogin } from '../../Redux/User/actions'
 
 const Login = (props: any) => {
+  const dispatch = useDispatch();
+  const {loginSuccess, loginLoading,loginFail} = useSelector(
+    (state: any) => state.user
+  )
   const [email, setEmail] = useState<string>('')
   const [passWord, setPassWord] = useState<string>('')
 
   const submitLoginForm = (e: any) => {
-    e.preventDefault()
+    e.preventDefault();
+    if ( email === '' || passWord === '') {
+      alert('All fields are mandatory!')
+    } else {
+      const data = {email, password:passWord}
+      dispatch(userLogin(data))
+    }
   }
+
+  useEffect(() => {
+    if (loginSuccess !== '') {
+      props.Close()
+      toast.success('Successfully Logged In!')
+      setEmail('')
+      setPassWord('')
+
+    } else if (loginFail === 'error' ){
+      props.Close()
+      toast.error('Error Logging In!')
+    } 
+    else {
+      toast.dismiss()
+    }
+  }, [loginSuccess,loginFail])
+
   return (
     <div>
       <ModalBody show={props.show}>
@@ -31,7 +62,7 @@ const Login = (props: any) => {
           </ModelHead>
           <h5 style={{textAlign: 'center'}}>Log in to exsisting account </h5>
           <br />
-          <FormWrapper onSubmit={(e) => submitLoginForm(e)}>
+          <FormWrapper onSubmit={submitLoginForm}>
             <Input
               placeholder='Email'
               type='email'
@@ -47,10 +78,14 @@ const Login = (props: any) => {
             />
             <Icons className='fas fa-lock-open'></Icons>
 
-            <SubmitButton type='submit'>
-              Login
-              <SubmitButtonIcon className='fas fa-arrow-right'></SubmitButtonIcon>
-            </SubmitButton>
+            <SubmitButton type="submit" disabled={loginLoading}>
+            {loginLoading ? 'Logging In...' : 'Login'}
+            <SubmitButtonIcon
+              className={
+                loginLoading ? 'fas fa-spinner' : 'fas fa-arrow-right'
+              }
+            ></SubmitButtonIcon>
+          </SubmitButton>
           </FormWrapper>
         </ModalContent>
       </ModalBody>

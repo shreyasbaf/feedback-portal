@@ -32,6 +32,7 @@ export const feedbackReducer = (state = initialState, action: any) => {
         ...state,
         feedbackPostLoading: true,
         feedbackPostFail: '',
+        feedbackPostSuccess: ''
       }
     case FEEDBACK_POST_SUCCESS:
       return {

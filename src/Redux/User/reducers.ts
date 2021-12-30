@@ -5,6 +5,7 @@ import {
   SIGNUP_FAIL,
   SIGNUP_REQUEST,
   SIGNUP_SUCCESS,
+  LOGOUT,
 } from './constants'
 
 interface initialStateTypes {
@@ -18,7 +19,7 @@ interface initialStateTypes {
 
 const initialState: initialStateTypes = {
   loginLoading: false,
-  loginSuccess: '',
+  loginSuccess: sessionStorage.getItem("loginSuccess")||'',
   loginFail: '',
   signupLoading: false,
   signupSuccess: '',
@@ -31,10 +32,12 @@ export const userReducer = (state = initialState, action: any) => {
         ...state,
         loginLoading: true,
         loginFail: '',
+        loginSuccess:''
       }
     case LOGIN_SUCCESS:
       return {
         ...state,
+        loginSuccess: action.payload,
         loginLoading: false,
       }
     case LOGIN_FAIL:
@@ -52,6 +55,7 @@ export const userReducer = (state = initialState, action: any) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
+        signupSuccess: action.payload,
         signupLoading: false,
       }
     case SIGNUP_FAIL:
@@ -59,6 +63,12 @@ export const userReducer = (state = initialState, action: any) => {
         ...state,
         signupLoading: false,
         signupFail: action.payload,
+      }
+    
+    case LOGOUT:
+      return{
+        ...state,
+        loginSuccess: '',
       }
 
     default:

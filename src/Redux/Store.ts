@@ -18,3 +18,5 @@ const store = createStore(rootReducer, composeWithDevTools(thunkMiddleware))
 export {store}
 
 export const baseURL = 'https://feedback-rapid.herokuapp.com'
+// export const baseURL = 'http://localhost:8080'
+
