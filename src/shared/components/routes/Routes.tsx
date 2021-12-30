@@ -17,7 +17,8 @@ const Routes: React.FC<any> = () => {
         <Switch>
           {/* <Route path="/dashboard" element={<Landingpage />} /> */}
           <Route path="/" element={<Homepage />} />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/feedback-portal" element={<Homepage />} />
+          <Route path="*" element={<NotFound />} />
         </Switch>
       </StyledRoutesContainer>
 
