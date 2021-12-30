@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/feedback-portal/static/js/main.8ff97aff.chunk.js",
-    "main.js.map": "/feedback-portal/static/js/main.8ff97aff.chunk.js.map",
+    "main.js": "/feedback-portal/static/js/main.bf71f1d3.chunk.js",
+    "main.js.map": "/feedback-portal/static/js/main.bf71f1d3.chunk.js.map",
     "runtime-main.js": "/feedback-portal/static/js/runtime-main.9c1f19c6.js",
     "runtime-main.js.map": "/feedback-portal/static/js/runtime-main.9c1f19c6.js.map",
-    "static/js/2.19c0ea91.chunk.js": "/feedback-portal/static/js/2.19c0ea91.chunk.js",
-    "static/js/2.19c0ea91.chunk.js.map": "/feedback-portal/static/js/2.19c0ea91.chunk.js.map",
+    "static/js/2.fb0a8818.chunk.js": "/feedback-portal/static/js/2.fb0a8818.chunk.js",
+    "static/js/2.fb0a8818.chunk.js.map": "/feedback-portal/static/js/2.fb0a8818.chunk.js.map",
     "static/js/3.ea0f5b64.chunk.js": "/feedback-portal/static/js/3.ea0f5b64.chunk.js",
     "static/js/3.ea0f5b64.chunk.js.map": "/feedback-portal/static/js/3.ea0f5b64.chunk.js.map",
     "index.html": "/feedback-portal/index.html",
-    "static/js/2.19c0ea91.chunk.js.LICENSE.txt": "/feedback-portal/static/js/2.19c0ea91.chunk.js.LICENSE.txt",
+    "static/js/2.fb0a8818.chunk.js.LICENSE.txt": "/feedback-portal/static/js/2.fb0a8818.chunk.js.LICENSE.txt",
     "static/media/close.svg": "/feedback-portal/static/media/close.ecf05d86.svg",
     "static/media/logo.svg": "/feedback-portal/static/media/logo.1d3e0137.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.9c1f19c6.js",
-    "static/js/2.19c0ea91.chunk.js",
-    "static/js/main.8ff97aff.chunk.js"
+    "static/js/2.fb0a8818.chunk.js",
+    "static/js/main.bf71f1d3.chunk.js"
   ]
 }
