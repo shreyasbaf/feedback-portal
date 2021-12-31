@@ -29,7 +29,6 @@ const Homepage = (props: any) => {
   const [email, setEmail] = useState<any>('')
   const [message, setMessage] = useState<string>('')
   const [categoryName, setCategoryName] = useState<string>('')
-
   const handleInput = (event: any, type: string) => {
     const {value} = event.target
     if (type === 'name') {
@@ -58,8 +57,7 @@ const Homepage = (props: any) => {
   useEffect(() => {
     if (feedbackPostSuccess === 'success') {
       toast.success('Successfully Submitted!')
-      setName('')
-      setEmail('')
+
       setMessage('')
       setCategoryName('')
     } else {
@@ -72,11 +70,17 @@ const Homepage = (props: any) => {
       setName(loginSuccess.name)
       setEmail(loginSuccess.email)
     }else {
-      // sessionStorage.clear();
       setName('')
       setEmail('')
     }
   }, [loginSuccess])
+
+  useEffect(() => {
+    if(localStorage.getItem('name')){
+      setName(localStorage.getItem('name') || '')
+      setEmail(localStorage.getItem('email') || '')
+    }
+  }, [])
 
   return (<>
       { loginSuccess.isAdmin ? <Landing /> : 

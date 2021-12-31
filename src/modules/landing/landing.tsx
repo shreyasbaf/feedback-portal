@@ -5,7 +5,6 @@ import {StyledTable} from '../../shared/components/table/styledTable'
 import {useDispatch, useSelector} from 'react-redux'
 import {getAllFeedbacks} from '../../Redux/Root/actions'
 import toast from 'react-hot-toast'
-import { Close, ModalBody, ModalContent, ModelHead } from '../login/style'
 import swal from 'sweetalert'
 
 const Landing = () => {
@@ -36,11 +35,6 @@ const Landing = () => {
     return (
       <GrayTableHead style={{fontFamily: 'Regular'}}>{heading}</GrayTableHead>
     )
-  }
-  const [show, setShow] = React.useState(true)
-
-  const closeModal = () =>{
-    setShow(false);
   }
 
   // show={show == "login" ? true : false} Close={() => Close()} 

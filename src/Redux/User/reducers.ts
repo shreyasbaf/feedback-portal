@@ -19,7 +19,7 @@ interface initialStateTypes {
 
 const initialState: initialStateTypes = {
   loginLoading: false,
-  loginSuccess: sessionStorage.getItem("loginSuccess")||'',
+  loginSuccess: localStorage.getItem("loginSuccess")||'',
   loginFail: '',
   signupLoading: false,
   signupSuccess: '',
@@ -35,6 +35,13 @@ export const userReducer = (state = initialState, action: any) => {
         loginSuccess:''
       }
     case LOGIN_SUCCESS:
+      console.log(action.payload, 'PAYLOAD')
+      sessionStorage.setItem("loginSuccess",JSON.stringify(action.payload))
+      localStorage.setItem("loginSuccess",JSON.stringify(action.payload))
+      localStorage.setItem("name",action.payload.name)
+      localStorage.setItem("email",action.payload.email)
+      sessionStorage.setItem("name",action.payload.name)
+      sessionStorage.setItem("email",action.payload.email)
       return {
         ...state,
         loginSuccess: action.payload,
@@ -66,6 +73,8 @@ export const userReducer = (state = initialState, action: any) => {
       }
     
     case LOGOUT:
+      sessionStorage.clear()
+      localStorage.clear()
       return{
         ...state,
         loginSuccess: '',

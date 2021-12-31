@@ -26,7 +26,7 @@ const Navbar = (props: any) => {
           alt="logo"
         />
         <ButtonHolders>
-        {loginSuccess.login === 'success' ?
+        {loginSuccess ?
         <Button
             background="rgb(162,48,237)"
             color="white"
@@ -53,8 +53,8 @@ const Navbar = (props: any) => {
         }
         </ButtonHolders>
       </ThreeColumns>
-      <Login show={show == "login" ? true : false} Close={() => Close()} />
-      <Signup show={show == "signup" ? true : false} Close={() => Close()} />
+      <Login show={show === "login" ? true : false} Close={() => Close()} />
+      <Signup show={show === "signup" ? true : false} Close={() => Close()} />
     </div>
   );
 };
