@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/feedback-portal/static/js/main.5dea32a8.chunk.js",
-    "main.js.map": "/feedback-portal/static/js/main.5dea32a8.chunk.js.map",
+    "main.js": "/feedback-portal/static/js/main.d6340a43.chunk.js",
+    "main.js.map": "/feedback-portal/static/js/main.d6340a43.chunk.js.map",
     "runtime-main.js": "/feedback-portal/static/js/runtime-main.a6e914e6.js",
     "runtime-main.js.map": "/feedback-portal/static/js/runtime-main.a6e914e6.js.map",
     "static/js/2.8fd38a44.chunk.js": "/feedback-portal/static/js/2.8fd38a44.chunk.js",
@@ -16,6 +16,6 @@
   "entrypoints": [
     "static/js/runtime-main.a6e914e6.js",
     "static/js/2.8fd38a44.chunk.js",
-    "static/js/main.5dea32a8.chunk.js"
+    "static/js/main.d6340a43.chunk.js"
   ]
 }
